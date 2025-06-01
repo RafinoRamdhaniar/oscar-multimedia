@@ -5,7 +5,7 @@ import "./Navbar.css";
 export default function Navbar(){
     return (
     <nav className="bg-[#E8B535] shadow-md fixed w-full top-0 z-50 h-20">
-      <div className="max-w-7xl mx-auto px-4 h-full flex flex-col md:flex-row items-center justify-between space-y-1 md:space-y-0 py-2">
+      <div className="w-full h-full flex flex-col md:flex-row items-center justify-between space-y-1 md:space-y-0 py-2 px-[5%]">
         
         {/* Teks berjalan */}
         <div className="w-full md:max-w-[70%] overflow-hidden whitespace-nowrap">

@@ -1,5 +1,8 @@
-import { Link } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation, Autoplay } from "swiper/modules";
 
 const dummyProducts = [
   {
@@ -11,7 +14,7 @@ const dummyProducts = [
       "Kertas Art Carton 260gsm",
       "Bisa laminasi doff/glossy",
     ],
-    image: "/src/assets/Kartu Identitas.jpg",
+    image: "/src/assets/Kartu_2.png",
   },
   {
     id: 2,
@@ -28,37 +31,67 @@ const dummyProducts = [
 
 export default function Home() {
   return (
-    <div className="pt-4 px-4 max-w-7xl mx-auto space-y-12">
-      {dummyProducts.map((product) => (
-        <div
-          key={product.id}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
-        >
-          {/* Kiri: Deskripsi */}
-          <div className="border border-dotted border-gray-400 p-6 h-64">
-            <h2 className="text-xl font-semibold mb-2">
-              <span className="text-yellow-600 font-bold">{product.title}</span> | {product.subtitle}
-            </h2>
-            <div className="text-gray-700 leading-relaxed text-sm mb-6 space-y-1">
-              {product.description.map((line, index) => (
-                <p key={index}>{line}</p>
-              ))}
-            </div>
-            <button className="border border-red-500 text-red-500 px-4 py-2 rounded hover:bg-red-500 hover:text-white transition">
-              Pesan Sekarang
-            </button>
-          </div>
+    <>
+      <style>{`
+        /* Override warna panah menjadi abu-abu */
+        .swiper-button-next,
+        .swiper-button-prev {
+          color: #888888; /* abu-abu */
+          font-size: 16px; /* perkecil ukuran panah */
+          width: 16px;
+          height: 16px;
+        }
+        /* Bisa kasih hover effect biar lebih jelas */
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+          color: #555555;
+        }
+      `}</style>
 
-          {/* Kanan: Gambar */}
-          <div className="border p-6 flex items-center justify-center h-64">
-            <img
-              src={product.image}
-              alt={product.title}
-              className="h-full max-w-full object-contain"
-            />
-          </div>
-        </div>
-      ))}
-    </div>
+      <div className="pt-4 px-[5%] w-full space-y-12">
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={1}
+          navigation
+          loop={true} // aktifkan loop
+          autoplay={{
+            delay: 5000, // 3 detik per slide
+            disableOnInteraction: false, // auto slide tetap jalan meski user interaksi
+          }}
+          modules={[Navigation, Autoplay]}
+          className="w-full px-6"
+        >
+          {dummyProducts.map((product) => (
+            <SwiperSlide key={product.id}>
+              <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 py-8">
+                {/* Kiri: Deskripsi */}
+                <div className="flex-1 border border-dotted border-gray-400 p-6 h-64">
+                  <h2 className="text-2xl font-semibold mb-4">
+                    <span className="text-yellow-600 font-bold">{product.title}</span> | {product.subtitle}
+                  </h2>
+                  <div className="text-gray-700 leading-relaxed text-sm mb-6 space-y-1">
+                    {product.description.map((line, index) => (
+                      <p key={index}>{line}</p>
+                    ))}
+                  </div>
+                  <button className="border border-red-500 text-red-500 px-4 py-2 rounded hover:bg-red-500 hover:text-white transition">
+                    Pesan Sekarang
+                  </button>
+                </div>
+
+                {/* Kanan: Gambar */}
+                <div className="flex-1 flex justify-center">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="max-h-64 h-64 w-auto object-contain"
+                  />
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </>
   );
 }
