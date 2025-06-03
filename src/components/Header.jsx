@@ -1,4 +1,3 @@
-import React, { Component } from 'react'
 import logo from '../assets/Logo Oscar old.png'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import { Link } from "react-router-dom"; // pastikan sudah di-import
@@ -17,17 +16,17 @@ export default function Header(){
         {/* Search Box */}
         <div className="relative flex-[3] w-full">
           <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" />
+            <MagnifyingGlassIcon className="h-5 w-5 text-gray-300" />
           </span>
           <input
             type="text"
             placeholder="Mau cetak apa?"
-            className="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 shadow-inner focus:outline-none"
+            className="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 shadow-inner focus:outline-none placeholder:text-gray-300"
           />
         </div>
 
         {/* Dropdown Kategori Produk */}
-        <div className="flex-[1] flex justify-end w-full md:w-auto">
+        <div className="font-medium flex-[1] flex justify-end w-full md:w-auto">
           <select
             className="text-sm md:text-base px-3 py-2 focus:outline-none"
             defaultValue=""
