@@ -1,4 +1,4 @@
-import logo from "../assets/Logo Oscar old.png";
+import logo from "../assets/images/kategori/Logo Oscar Old.png";
 
 export default function Profile() {
   return (

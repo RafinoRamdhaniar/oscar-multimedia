@@ -1,4 +1,4 @@
-import logo from '../assets/Logo Oscar old.png'
+import logo from "../assets/images/kategori/Logo Oscar old.png";
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import { Link } from "react-router-dom"; // pastikan sudah di-import
 
